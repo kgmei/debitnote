@@ -1,0 +1,62 @@
+@Metadata.layer: #CORE
+@UI: {
+  headerInfo: {
+    typeName: 'Response Log',
+    typeNamePlural: 'Response Logs'
+  }
+}
+
+annotate view ZC_RESPONSE_CDN with
+{
+
+
+  @UI.facet:
+  [
+  {
+      id:'LogDetails',
+      purpose:#STANDARD,
+      type: #IDENTIFICATION_REFERENCE,
+      label: 'Response Details',
+      position: 10
+   }
+  ]
+
+  @UI.hidden: true
+  ZResponseUuid;
+
+  @UI.hidden: true
+  ZInspectionlotId;
+
+  @UI:
+  {
+      lineItem: [ { position: 10 } ],
+      identification: [ { position: 10 } ],
+      selectionField: [ { position: 10 } ]
+  }
+  ZDebitnoteId;
+  @UI:
+  {
+      lineItem: [ { position: 20 } ],
+      identification: [ { position: 20 } ],
+      selectionField: [ { position: 20 } ]
+  }
+  ZResponse;
+  @UI:
+  {
+      lineItem: [ { position: 30 } ],
+      identification: [ { position: 30 } ],
+      selectionField: [ { position: 30 } ]
+  }
+  ZResult;
+  @UI:
+  {
+      lineItem: [ { position: 50 } ],
+      identification: [ { position: 50 } ],
+      selectionField: [ { position: 50 } ]
+  }
+  ZLogCreatedon;
+
+  @UI.hidden: true
+  ZInspectionlotUuid;
+
+}

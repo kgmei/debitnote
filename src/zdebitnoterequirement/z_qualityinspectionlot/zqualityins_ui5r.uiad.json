@@ -1,0 +1,33 @@
+{
+  "formatVersion": "1",
+  "header": {
+    "description": "Quality Inspection Lot",
+    "originalLanguage": "en",
+    "abapLanguageVersion": "cloudDevelopment"
+  },
+  "generalInformation": {
+    "appType": "ui5",
+    "catalogId": "SAP_TC_UI5_REPO_UIAD"
+  },
+  "ui5AppDetails": {
+    "appId": "zqualityinspection"
+  },
+  "navigation": {
+    "targetMappingId": "UI5R_32287D0EB861107A5ECB195ED3FE485E1A05C181_TM",
+    "semanticObject": "zqualityins",
+    "action": "Deploy",
+    "desktop": true,
+    "tablet": true,
+    "phone": true
+  },
+  "tiles": [
+    {
+      "id": "UI5R_32287D0EB861107A5ECB195ED3FE485E1A05C181_AL",
+      "tileType": "static",
+      "isDefault": true,
+      "standard": {
+        "title": "Quality Inspection Lot"
+      }
+    }
+  ]
+}

@@ -1,0 +1,131 @@
+managed implementation in class zbp_i_ins_char unique;
+strict ( 2 );
+with draft;
+
+define behavior for ZI_INS_CHAR //alias <alias_name>
+persistent table zinsp_char_db
+draft table zinsp_char_d
+lock master total etag ZLocalLastChangedAt
+authorization master ( instance )
+etag master ZLastChangedAt
+with additional save
+{
+
+  field (readonly)
+  ZProductUuid,
+  Z_Mainproduct_id,
+  description;
+
+
+
+  field (numbering : managed)
+  ZProductUuid;
+
+  create;
+  update;
+  delete;
+determination CreateItemCharacteristics on save { create; update; }
+determination setMainProductName on modify {field ZCurrMainProductName; create; update; }
+
+  draft action Edit;
+draft action Activate optimized;
+draft action Discard;
+draft action Resume;
+draft determine action Prepare;
+
+ mapping for ZINSP_CHAR_DB
+{
+
+ZCurrMainProductID = z_curr_mainproductid;
+ZCurrMainProductName = z_curr_mainproductname;
+ZProductUuid = z_product_uuid;
+ZMainproductid =  z_mainproductid;
+Z_Mainproduct_id = z_mainproduct_id;
+ZMainproductprice = z_mainproductprice;
+ZMainproductpricecur = z_mainproductpricecur;
+ZCreatedBy = z_created_by;
+ZCreatedAt = z_created_at;
+ZLastChangedBy = z_last_changed_by;
+ZLastChangedAt = z_last_changed_at;
+ZLocalLastChangedAt = z_local_last_changed_at;
+}
+
+  association _Root { create; with draft; }
+  association _his { create; with draft; }
+}
+
+define behavior for ZINS_CHAR_ITEM //alias <alias_name>
+persistent table zinsp_charitm_db
+draft table zinsp_char_itm_d
+lock dependent by _Item
+authorization dependent by _Item
+with additional save
+etag master ZLastChangedAt
+{
+  update;
+  delete;
+  field ( readonly )
+  ZProductUuid,
+  Z_Mainproduct_id,
+  Descriptionitem;
+
+
+  field ( numbering : managed )
+  ZSubproductUuid;
+
+
+  determination CalculateComponent on save { field ZProductUuid; create; }
+determination setProductName on modify {field ZProductName; create; update; }
+  mapping for   ZINSP_CHARITM_DB
+{
+ZSubProductID = z_subproductid;
+ZSubproductUuid = z_subproduct_uuid;
+ZMainproductid =  z_mainproductid;
+ZSupProductid = z_sup_productid;
+ZProductName = z_product_name;
+ZProductUuid = z_product_uuid;
+ZPricingType = z_pricing_type;
+ZFormula = z_formula;
+ZProductType = z_product_type;
+ZSupprdPrice = z_supprd_price;
+ZSupprdCur = z_supprd_cur;
+ZCreatedBy = z_created_by;
+ZCreatedAt = z_created_at;
+ZLocalLastChangedAt = z_local_last_changed_at;
+ZLastChangedBy = z_last_changed_by;
+ZLastChangedAt = z_last_changed_at;
+}
+
+  association _Item  { with draft; }
+}
+
+define behavior for ZI_CHANGEHIS //alias <alias_name>
+persistent table zchangehis
+draft table zchangehis_d
+lock dependent by _Item
+authorization dependent by _Item
+with additional save
+etag master ChangeTimestamp
+{
+  update;
+  delete;
+  field ( readonly )
+  ChangeId,
+  MainProductID,
+  ProductId;
+
+
+  mapping for   zchangehis
+{
+ChangeId = change_id;
+ChangeOperation = change_operation;
+ChangeTimestamp = change_timestamp;
+ChangedBy = changed_by;
+FieldName = field_name;
+MainProductID = z_mainproduct_id;
+NewValue = new_value;
+OldValue = old_value;
+ProductId = z_product_uuid;
+}
+ association _Item  { with draft; }
+}

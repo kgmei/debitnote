@@ -1,0 +1,6 @@
+@EndUserText.label: 'Service Definition of Quality Inspection'
+define service ZSD_QUALITY_INSPECTION {
+  expose ZC_QUALITY_INSPECTION_ROOT;
+  expose ZC_QUALITY_INSPECTION_ITEM;
+  expose ZC_RESPONSE_CDN;
+}

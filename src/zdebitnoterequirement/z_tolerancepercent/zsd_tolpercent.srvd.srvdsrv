@@ -1,0 +1,5 @@
+@EndUserText.label: 'service definition of supplierwgttol'
+define service ZSD_TOLPERCENT {
+  expose ZC_TOLPERCENTROOT;
+  expose zc_tolpercentitem;
+}

@@ -1,0 +1,72 @@
+managed implementation in class zbp_i_wgttolerance unique;
+strict ( 2 );
+with draft;
+
+define behavior for ZI_WGTTOLERANCE //alias <alias_name>
+persistent table zweighttolerance
+draft table zweighttol_d
+lock master total etag ZLocalLastChangedAt
+authorization master ( instance )
+etag master ZLastChangedAt
+with additional save
+
+{
+field (readonly) Uuid; //,Weightid
+
+  field (numbering : managed)
+  Uuid;
+determination WeightTolerance on save { create; update; }
+validation WeightTolValidation on save {field Weightid; create;}
+
+
+  create( features : global );
+  update;
+  delete;
+
+    draft action Edit;
+draft action Activate optimized;
+draft action Discard;
+draft action Resume;
+draft determine action Prepare;
+mapping for zweighttolerance
+{
+Uuid = uuid;
+Weightid = weightid;
+ ZCreatedBy = z_created_by;
+       ZCreatedAt = z_created_at;
+       ZLastChangedBy = z_last_changed_by;
+       ZLastChangedAt = z_last_changed_at;
+       ZLocalLastChangedAt = z_local_last_changed_at;
+}
+  association _Item { create; with draft; }
+}
+
+define behavior for ZI_WGTTOLITM //alias <alias_name>
+persistent table zweighttol_itm
+draft table zweighttol_itm_d
+lock dependent by _Root
+authorization dependent by _Root
+with additional save
+etag master ZLastChangedAt
+{
+  update;
+  delete;
+  field ( readonly ) Uuid,ZUuid;
+  field ( numbering : managed )
+  ZUuid;
+   mapping for zweighttol_itm
+{
+Uuid =  uuid;
+Weightid = weightid;
+ZUuid = z_uuid;
+ZToleranceweight = z_toleranceweight;
+ZToleranceto = z_toleranceto;
+ZTolerancefrom = z_tolerancefrom;
+ ZCreatedBy = z_created_by;
+       ZCreatedAt = z_created_at;
+       ZLastChangedBy = z_last_changed_by;
+       ZLastChangedAt = z_last_changed_at;
+       ZLocalLastChangedAt = z_local_last_changed_at;
+}
+  association _Root  { with draft; }
+}

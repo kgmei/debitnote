@@ -1,0 +1,5 @@
+@EndUserText.label: 'service definition of supplierwgttol'
+define service ZSD_WgtTol {
+  expose ZC_WGTTOLERANCE;
+  expose ZC_WGTTOL_ITM;
+}

@@ -1,0 +1,33 @@
+{
+  "formatVersion": "1",
+  "header": {
+    "description": "Tolerance Percent",
+    "originalLanguage": "en",
+    "abapLanguageVersion": "cloudDevelopment"
+  },
+  "generalInformation": {
+    "appType": "ui5",
+    "catalogId": "SAP_TC_UI5_REPO_UIAD"
+  },
+  "ui5AppDetails": {
+    "appId": "ztolerancepercent"
+  },
+  "navigation": {
+    "targetMappingId": "UI5R_EAB13293E8E692AA72E19AF6F5871573CC74C46A_TM",
+    "semanticObject": "ztoleranceper",
+    "action": "Deploy",
+    "desktop": true,
+    "tablet": true,
+    "phone": true
+  },
+  "tiles": [
+    {
+      "id": "UI5R_EAB13293E8E692AA72E19AF6F5871573CC74C46A_AL",
+      "tileType": "static",
+      "isDefault": true,
+      "standard": {
+        "title": "Tolerance Percent"
+      }
+    }
+  ]
+}

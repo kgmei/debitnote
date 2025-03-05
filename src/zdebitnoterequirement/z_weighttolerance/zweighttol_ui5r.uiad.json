@@ -1,0 +1,33 @@
+{
+  "formatVersion": "1",
+  "header": {
+    "description": "Weight Tolerance",
+    "originalLanguage": "en",
+    "abapLanguageVersion": "cloudDevelopment"
+  },
+  "generalInformation": {
+    "appType": "ui5",
+    "catalogId": "SAP_TC_UI5_REPO_UIAD"
+  },
+  "ui5AppDetails": {
+    "appId": "zweighttolerance"
+  },
+  "navigation": {
+    "targetMappingId": "UI5R_A8532881B85F54D049A66627C8BDD3C388953DD7_TM",
+    "semanticObject": "zweighttol",
+    "action": "Deploy",
+    "desktop": true,
+    "tablet": true,
+    "phone": true
+  },
+  "tiles": [
+    {
+      "id": "UI5R_A8532881B85F54D049A66627C8BDD3C388953DD7_AL",
+      "tileType": "static",
+      "isDefault": true,
+      "standard": {
+        "title": "Weight Tolerance"
+      }
+    }
+  ]
+}

@@ -1,0 +1,44 @@
+@Metadata.layer: #CORE
+@UI:{
+    headerInfo: {
+        typeName: 'WeightTolerance',
+        typeNamePlural: 'WeightTolerances',
+        title: {
+            type: #STANDARD,
+            label: 'Weight Tolerance',
+            value: 'Weightid'
+        }
+    }
+}annotate view ZC_WGTTOLERANCE
+    with 
+{
+
+
+     @UI.facet:
+  [
+      {
+          id:'WeightTolerance',
+          purpose:#STANDARD,
+          type: #IDENTIFICATION_REFERENCE,
+          label: 'Weight Tolerance',
+          position: 10
+      },
+       {
+          id:'Range',
+          purpose:#STANDARD,
+          type: #LINEITEM_REFERENCE,
+          label: 'Range',
+          position: 20,
+          targetElement: '_Item'
+      }
+   ]
+  @UI.hidden: true
+  Uuid;
+   @UI: {
+    lineItem: [ { position: 10 } ],
+    identification: [ { position: 10 } ],
+    selectionField: [ { position: 10 } ]
+  }
+  Weightid;
+    
+}

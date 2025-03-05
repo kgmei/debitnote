@@ -1,0 +1,33 @@
+{
+  "formatVersion": "1",
+  "header": {
+    "description": "Pricing Configuration",
+    "originalLanguage": "en",
+    "abapLanguageVersion": "cloudDevelopment"
+  },
+  "generalInformation": {
+    "appType": "ui5",
+    "catalogId": "SAP_TC_UI5_REPO_UIAD"
+  },
+  "ui5AppDetails": {
+    "appId": "zinspchar"
+  },
+  "navigation": {
+    "targetMappingId": "UI5R_605BCAC97A3973541ED7D54D2FB4BB3282DE4146_TM",
+    "semanticObject": "z_inspchar",
+    "action": "Deploy",
+    "desktop": true,
+    "tablet": true,
+    "phone": true
+  },
+  "tiles": [
+    {
+      "id": "UI5R_605BCAC97A3973541ED7D54D2FB4BB3282DE4146_AL",
+      "tileType": "static",
+      "isDefault": true,
+      "standard": {
+        "title": "Pricing Configuration"
+      }
+    }
+  ]
+}

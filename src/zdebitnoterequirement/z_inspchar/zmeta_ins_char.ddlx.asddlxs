@@ -1,0 +1,89 @@
+
+@Metadata.layer: #CORE
+@UI: {
+  headerInfo: {
+    typeName: 'Product',
+    typeNamePlural: 'Products'
+  }
+}
+annotate view ZC_INS_CHAR with
+{
+
+
+  @UI.facet:
+  [
+      {
+          id:'Product',
+          purpose:#STANDARD,
+          type: #IDENTIFICATION_REFERENCE,
+          label: 'Product',
+          position: 10
+      },
+       {
+          id:'Components',
+          purpose:#STANDARD,
+          type: #LINEITEM_REFERENCE,
+          label: 'Components',
+          position: 20,
+          targetElement: '_Root'
+      },
+      {
+          id:'ChangeHis',
+          purpose:#STANDARD,
+          type: #LINEITEM_REFERENCE,
+          label: 'Change History',
+          position: 30,
+          targetElement: '_his'
+      }
+   ]
+// @UI.hidden: true
+   @UI: {
+  lineItem:       [ { position: 100, importance: #HIGH }
+                  //  ,{ type: #FOR_ACTION, dataAction: 'acceptSalesOrder', label: 'Total Weight' }
+                   // ,{ type: #FOR_ACTION, dataAction: 'acceptTravel', label: 'Accept Travel' }
+                    //,{ type: #FOR_ACTION, dataAction: 'rejectTravel', label: 'Reject Travel' }
+       ],
+  identification: [ { position: 100 }
+                  // ,{ type: #FOR_ACTION, dataAction: 'acceptSalesOrder', label: 'Total Weight' }
+                  //,{ type: #FOR_ACTION, dataAction: 'CreateDebitNote', label: 'Create Subsequent Credit' }
+                   //,{ type: #FOR_ACTION, dataAction: 'rejectTravel', label: 'Reject Travel' }
+       ],
+       hidden: true,
+    textArrangement: #TEXT_ONLY
+
+  }
+  
+  ZProductUuid;
+
+
+    @UI: {
+    lineItem: [ { position: 10 } ],
+    identification: [ { position: 10 } ],
+    selectionField: [ { position: 10 } ]
+  }
+   @Consumption.valueHelpDefinition: [{ label: 'Product ID', entity : {name: 'I_ProductUnitOfMeasureTP_2',
+element: 'Product' } }]
+@EndUserText.label: 'Product ID'
+  ZCurrMainProductID;
+ @UI: {
+    lineItem: [ { position: 20 } ],
+    identification: [ { position: 20 } ],
+    selectionField: [ { position: 20 } ]
+  }
+  description;
+@UI: {
+    lineItem: [ { position: 30 } ],
+    identification: [ { position: 30 } ],
+    selectionField: [ { position: 30 } ]
+  }
+    @UI.hidden: true
+  ZMainproductprice;
+   @UI: {
+    lineItem: [ { position: 40 } ],
+    identification: [ { position: 40 } ],
+    selectionField: [ { position: 40 } ]
+  }
+   @UI.hidden: true
+  ZMainproductpricecur;
+
+}

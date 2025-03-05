@@ -1,0 +1,30 @@
+projection implementation in class zbp_c_quality_inspection_root unique;
+strict ( 2 );
+use side effects;
+use draft;
+
+define behavior for ZC_QUALITY_INSPECTION_ROOT alias QualityInsRoot//alias <alias_name>
+use etag
+{
+  use create;
+  use update;
+  use delete;
+
+  use action Edit;
+  use action Activate;
+  use action Discard;
+  use action Resume;
+  use action Prepare;
+
+  use association _inspectionLotItm { with draft; }//{ create; }
+ use action calculateTotalWeight;
+ use action CreateDebitNote;
+}
+
+define behavior for ZC_QUALITY_INSPECTION_ITEM alias QualityInsItem//alias <alias_name>
+{
+  use update;
+ //use delete;
+
+  use association _inspectionlotRoot{ with draft; }
+}

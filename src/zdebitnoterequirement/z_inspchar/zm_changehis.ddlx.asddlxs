@@ -1,0 +1,56 @@
+@Metadata.layer: #CORE
+annotate entity ZC_CHANGEHIS
+    with 
+{
+     @UI.facet:  
+[ 
+    {  
+        id:'ChangeHistory',  
+        purpose:#STANDARD,  
+        type: #IDENTIFICATION_REFERENCE,  
+        label: 'Change History', 
+        position: 10 
+    } 
+] 
+     @UI: {  
+      lineItem: [ { position:10 } ],  
+      identification: [ { position: 10 } ],  
+      selectionField: [ { position: 10 } ]  
+    }   
+    @EndUserText.label: 'Field Name'
+    
+    FieldName;
+          @UI: {  
+      lineItem: [ { position:20 } ],  
+      identification: [ { position: 20 } ],  
+      selectionField: [ { position: 20 } ]  
+    }   
+    @EndUserText.label: 'Change Operation'
+    
+    ChangeOperation;
+      @UI: {  
+      lineItem: [ { position:30 } ],  
+      identification: [ { position: 30 } ],  
+      selectionField: [ { position: 30 } ]  
+    }   
+    @EndUserText.label: 'Change Timestamp'
+    
+    ChangeTimestamp;
+      @UI: {  
+      lineItem: [ { position:40 } ],  
+      identification: [ { position: 40 } ],  
+      selectionField: [ { position: 40 } ]  
+    }   
+    @EndUserText.label: 'Old Value'
+    
+   OldValue;
+    @UI: {  
+      lineItem: [ { position:50 } ],  
+      identification: [ { position: 50 } ],  
+      selectionField: [ { position: 50 } ]  
+    }   
+    @EndUserText.label: 'New Value'
+    
+    NewValue;
+    
+}

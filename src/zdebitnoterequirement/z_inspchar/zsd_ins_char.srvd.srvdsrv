@@ -1,0 +1,6 @@
+@EndUserText.label: 'Service Definiton Inspection Character'
+define service ZSD_INS_CHAR {
+  expose ZC_INS_CHAR;
+  expose ZC_INS_CHAR_ITEM;
+  expose ZC_CHANGEHIS;
+}

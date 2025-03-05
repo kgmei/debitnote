@@ -1,0 +1,70 @@
+managed implementation in class zbp_i_tolpercentroot unique;
+strict ( 2 );
+with draft;
+
+define behavior for ZI_TOLPERCENTROOT //alias <alias_name>
+persistent table ztolpercent_root
+draft table ztolprctroot_d
+lock master total etag ZLocalLastChangedAt
+authorization master ( instance )
+etag master ZLastChangedAt
+with additional save
+{
+  create( features : global );
+  update;
+  delete;
+  field ( readonly ) Rootuuid;
+    field (numbering : managed)
+  Rootuuid;
+
+      draft action Edit;
+draft action Activate optimized;
+draft action Discard;
+draft action Resume;
+draft determine action Prepare;
+
+mapping for ztolpercent_root
+{
+ZTolpercentid = z_tolpercentid;
+Rootuuid = rootuuid;
+ ZCreatedBy = z_created_by;
+       ZCreatedAt = z_created_at;
+       ZLastChangedBy = z_last_changed_by;
+       ZLastChangedAt = z_last_changed_at;
+       ZLocalLastChangedAt = z_local_last_changed_at;
+}
+  association _Item { create;with draft; }
+
+}
+
+define behavior for ZI_TOLPERCENTITEM //alias <alias_name>
+persistent table ztolpercent_item
+draft table ztolprctitem_d
+lock dependent by _Root
+authorization dependent by _Root
+with additional save
+etag master ZLastChangedAt
+{
+  update;
+  delete;
+  field ( readonly ) ItmzUuid,Rootuuid;
+  field ( numbering : managed )
+  ItmzUuid;
+
+validation TolPercentPrd on save {field Zproductid; create;}
+
+mapping for ztolpercent_item
+{
+ItmzUuid = itmz_uuid;
+Rootuuid = rootuuid;
+Zproductid = z_productid;
+ZMainproductdes = z_mainproductdescription;
+ZTolpercent = z_tolpercent;
+ ZCreatedBy = z_created_by;
+       ZCreatedAt = z_created_at;
+       ZLastChangedBy = z_last_changed_by;
+       ZLastChangedAt = z_last_changed_at;
+       ZLocalLastChangedAt = z_local_last_changed_at;
+}
+  association _Root  { with draft; }
+}

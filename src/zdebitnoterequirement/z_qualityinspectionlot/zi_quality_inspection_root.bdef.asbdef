@@ -1,0 +1,157 @@
+managed implementation in class zbp_i_quality_inspection_root unique;
+strict ( 2 );
+with draft;
+
+define behavior for ZI_QUALITY_INSPECTION_ROOT alias QualityInsRoot  //alias <alias_name>
+persistent table zqualityins_root
+draft table zquality_root_d
+lock master total etag ZLocalLastChangedAt
+authorization master ( instance )
+with additional save
+//etag master <field_name>
+{
+  field ( readonly )
+  ZInspectionlotUuid,
+  ZCreatedAt,
+  ZCreatedBy,
+  ZLocalLastChangedAt,
+  ZLastChangedAt,
+  ZLastChangedBy;
+  field ( numbering : managed )
+  ZInspectionlotUuid;
+ create;
+  update;
+  delete;
+
+determination CreateItemCharacteristics on save { create;}
+validation Inspectionlotvalidate on save {field ZInspectionlotId; create;}
+
+action calculateTotalWeight;
+action ( features : instance ) CreateDebitNote result [1] $self;
+
+side effects {
+ action calculateTotalWeight affects entity _inspectionLotItm,$self;
+ action CreateDebitNote affects entity _ResponseDN,$self;
+
+ }
+
+  draft action Edit;
+draft action Activate optimized;
+draft action Discard;
+draft action Resume;
+draft determine action Prepare;
+
+  mapping for zqualityins_root
+    {
+
+      ZInspectionlotUuid   = z_inspectionlot_uuid;
+      ZInspectionlotId     = z_inspectionlot_id;
+      ZGrnId               = z_grn_id;
+      ZPurchaseorderId     = z_purchaseorder_id;
+      ZSubsequentCrdtFlag = z_subsequentcrdt_flag;
+      ZGrnQtyUnit          = z_grn_qty_unit;
+      ZGrnQty               = z_grn_qty;
+      ZLocalLastChangedAt  = z_local_last_changed_at;
+      ZLastChangedBy       = z_last_changed_by;
+      ZLastChangedAt       = z_last_changed_at;
+      ZUnrestrictedqtyUnit = z_unrestrictedqty_unit;
+      ZUnrestrictedQty     = z_unrestricted_qty;
+      ZSamplesizeUnit      = z_samplesize_unit;
+      ZSamplesize          = z_samplesize;
+      ZAfterQC             = z_after_qc;
+      ZQualityinsStatus    = z_qualityins_status;
+      ZPOPrice             = z_poprice;
+      ZPOPriceCurrency     = z_poprice_cur;
+      ZInitialBillAmnt     = z_initbill;
+      ZInitialBillAmntCurrency = z_initbill_cur;
+      ZDifferenceDebit     = z_difference_debit;
+      ZCreatedBy           = z_created_by;
+      ZCreatedAt           = z_created_at;
+    }
+
+  association _inspectionLotItm { create; with draft; }
+
+  association _ResponseDN { create; with draft; }
+}
+
+define behavior for ZI_QUALITY_INSPECTION_ITEM alias QualityInsItem  //alias <alias_name>
+persistent table zqualityins_item
+draft table zquality_item_d
+lock dependent by _inspectionlotRoot
+authorization dependent by _inspectionlotRoot
+etag master ZLastChangedAt
+//etag master <field_name>
+
+{
+  update;
+  delete;
+  field ( readonly )
+
+ZItemUuid,
+  ZInspectionlotUuid;
+  field ( numbering : managed )
+  ZItemUuid;
+  determination CreateItmaction on save { create; }
+
+  mapping for zqualityins_item
+    {
+    ZItemUuid = z_item_uuid;
+    //  ZMaterialId          = z_material_id;
+      ZInspectionlotUuid   = z_inspectionlot_uuid;
+      ZMatDescription = z_mat_des;
+//      ZMaterialDescription = z_material_description;
+      ZInfoField1          = z_infofield1;
+      ZInfoField2          = z_infofield2;
+      ZTotalWeight         = z_total_weight;
+      ZTotalWeightUOM      = z_total_weight_unit;
+      ZTotalPrice           = z_total_price;
+      ZTotalPriceCurrency   = z_total_price_curr;
+      ZTotalAmount          = z_total_amount;
+      ZTotalAmountCurrency  = z_total_amount_curr;
+      ZLocalLastChangedAt  = z_local_last_changed_at;
+      ZLastChangedBy       = z_last_changed_by;
+      ZLastChangedAt       = z_last_changed_at;
+         ZCreatedBy           = z_created_by;
+      ZCreatedAt           = z_created_at;
+    }
+  association _inspectionlotRoot { with draft; }
+}
+
+define behavior for ZI_RESPONSE_CDN alias Response  //alias <alias_name>
+persistent table zresponse_dn_db
+draft table zresponse_dn_d
+lock dependent by _inspectionlotRoot
+authorization dependent by _inspectionlotRoot
+etag master ZLastChangedAt
+//etag master <field_name>
+
+{
+  update;
+  delete;
+  field ( readonly )
+
+ZResponseUuid,
+  ZInspectionlotUuid;
+  field ( numbering : managed )
+  ZResponseUuid;
+
+
+  mapping for zresponse_dn_db
+    {
+    ZInspectionlotUuid = z_inspectionlot_uuid;
+       ZResponseUuid = z_response_uuid;
+       ZInspectionlotId = z_inspectionlot_id;
+       ZDebitnoteId = z_debitnote_id;
+       ZResponse = z_response;
+       ZResult = z_result;
+       ZStatus = z_status;
+       ZLogCreatedon = z_log_createdon;
+       ZCreatedBy = z_created_by;
+       ZCreatedAt = z_created_at;
+       ZLastChangedBy = z_last_changed_by;
+       ZLastChangedAt = z_last_changed_at;
+       ZLocalLastChangedAt = z_local_last_changed_at;
+
+    }
+  association _inspectionlotRoot { with draft; }
+}

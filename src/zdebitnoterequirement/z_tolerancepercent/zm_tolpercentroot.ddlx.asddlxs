@@ -1,0 +1,46 @@
+@Metadata.layer: #CORE
+@UI:{
+    headerInfo: {
+        typeName: 'TolerancePercent',
+        typeNamePlural: 'TolerancePercents',
+        title: {
+            type: #STANDARD,
+            label: 'Tolerance Percentage',
+            value: 'ZTolpercentid'
+        }
+    }
+}
+annotate entity ZI_TOLPERCENTROOT
+    with 
+{
+
+
+      @UI.facet:
+  [
+      {
+          id:'TolerancePercent',
+          purpose:#STANDARD,
+          type: #IDENTIFICATION_REFERENCE,
+          label: 'Tolerance Percentage',
+          position: 10
+      },
+       {
+          id:'PercentageTable',
+          purpose:#STANDARD,
+          type: #LINEITEM_REFERENCE,
+          label: 'Percentage Table',
+          position: 20,
+          targetElement: '_Item'
+      }
+   ]
+  @UI.hidden: true
+  Rootuuid;
+   @UI: {
+    lineItem: [ { position: 10 } ],
+    identification: [ { position: 10 } ],
+    selectionField: [ { position: 10 } ]
+  }
+  ZTolpercentid;
+    
+    
+}

@@ -1,0 +1,242 @@
+@Metadata.layer: #CORE
+@UI: {
+  headerInfo: {
+    typeName: 'Quality Inspection',
+    typeNamePlural: 'Quality Inspections'
+  }
+}
+annotate view ZC_QUALITY_INSPECTION_ROOT with
+{
+  @UI.facet:
+  [
+  {
+  id:'QualityInspectionRoot',
+  purpose:#STANDARD,
+  type: #IDENTIFICATION_REFERENCE,
+  label: 'Quality Inspection',
+  position: 10
+  },
+  {
+  id:'QualityInspectionItem',
+  purpose:#STANDARD,
+  type: #LINEITEM_REFERENCE,
+  label: 'Quality Inspection Item',
+  position: 20,
+  targetElement: '_inspectionLotItm'
+  },
+  {
+  id:'Response',
+  purpose:#STANDARD,
+  type: #LINEITEM_REFERENCE,
+  label: 'DebitNote Response',
+  position: 30,
+  targetElement: '_ResponseDN'
+  }
+  ]
+  //  @UI.hidden: true
+  //  ZInspectionlotUuid;
+
+//      @UI: { lineItem: [
+//     { type: #FOR_ACTION, position: 10, dataAction: 'calculateTotalWeight', label: 'Total Weight' },
+// 
+//     { type: #FOR_ACTION, position: 20, dataAction: 'CreateDebitNote', label: 'Create Subsequent Credit' } ], 
+//     identification: [ { type: #FOR_ACTION, position: 10, dataAction: 'calculateTotalWeight', label: 'Total Weight' }, 
+//     { type: #FOR_ACTION, position: 20, dataAction: 'CreateDebitNote', label: 'Create Subsequent Credit' } 
+//     ],
+//      textArrangement: #TEXT_ONLY } 
+//    @UI.hidden: true
+  @UI: { lineItem: [
+     { type: #FOR_ACTION, position: 10, dataAction: 'calculateTotalWeight', label: 'Total Weight' }
+ ], 
+     //{ type: #FOR_ACTION, position: 20, dataAction: 'CreateDebitNote', label: 'Create Subsequent Credit' } 
+     identification: [ { type: #FOR_ACTION, position: 10, dataAction: 'calculateTotalWeight', label: 'Total Weight' } 
+     //{ type: #FOR_ACTION, position: 20, dataAction: 'CreateDebitNote', label: 'Create Subsequent Credit' } 
+     ],
+      textArrangement: #TEXT_ONLY } 
+    @UI.hidden: true
+  ZInspectionlotUuid;
+
+
+@UI: {
+ lineItem: [ { position: 10, label: 'Inspection Lot ID'} ],
+ identification: [ { position: 10, label: 'Inspection Lot ID' } ],
+ selectionField: [ { position: 10 } ]
+ } 
+
+ @Consumption.valueHelpDefinition: [{ label: 'Inspection Lot ID', entity : {name: 'I_InspectionLotStdVH',
+element: 'InspectionLot' } }]
+@EndUserText.label: 'Inspection Lot ID'
+  ZInspectionlotId;
+  //  @UI.lineItem: [ {
+  //    position: 20 ,
+  //    importance: #MEDIUM,
+  //    label: 'GRN ID',
+  //    cssDefault.width: '200px'
+  //  } ]
+  //  @UI.identification: [ {
+  //    position: 20 ,
+  //    label: 'GRN ID',
+  //    cssDefault.width: '200px'
+  //  } ]
+  //  ZGrnId;
+
+  @UI.lineItem: [ {
+    position: 30 ,
+    importance: #MEDIUM,
+    label: 'Purchaseorder ID',
+    cssDefault.width: '200px'
+  } ]
+  @UI.identification: [ {
+    position: 30 ,
+    label: 'Purchaseorder ID',
+    cssDefault.width: '200px'
+  } ]
+  ZPurchaseorderId;
+
+  //
+  //  @UI.lineItem: [ {
+  //  position: 40 ,
+  //  importance: #MEDIUM,
+  //  label: 'GRN Qty',
+  //    cssDefault.width: '200px'
+  //  } ]
+  //  @UI.identification: [ {
+  //    position: 40 ,
+  //    label: 'GRN Qty',
+  //    cssDefault.width: '200px'
+  //  } ]
+  //  ZGrnQty;
+
+  @UI.lineItem: [ {
+  position: 50 ,
+  importance: #MEDIUM,
+  label: 'Unrestricted Qty',
+    cssDefault.width: '200px'
+  } ]
+  @UI.identification: [ {
+    position: 50 ,
+    label: 'Unrestricted Qty',
+    cssDefault.width: '200px'
+  } ]
+  ZUnrestrictedQty;
+    @UI.lineItem: [ {
+  position: 60 ,
+  importance: #MEDIUM,
+  label: 'GRN ID',
+   cssDefault.width: '100px'
+  } ]
+  @UI.identification: [ {
+    position: 60 ,
+    label: 'GRN ID',
+    cssDefault.width: '100px'
+  } ]
+  ZGrnId;
+    @UI.lineItem: [ {
+  position: 70 ,
+  importance: #MEDIUM,
+  label: 'GRN Quantity',
+   cssDefault.width: '100px'
+  } ]
+  @UI.identification: [ {
+    position: 70 ,
+    label: 'GRN Quantity',
+    cssDefault.width: '100px'
+  } ]
+  ZGrnQty;
+  @UI.lineItem: [ {
+  position: 80 ,
+  importance: #MEDIUM,
+  label: 'Sample Size',
+    cssDefault.width: '100px'
+  } ]
+  @UI.identification: [ {
+    position: 80 ,
+    label: 'Sample Size',
+    cssDefault.width: '100px'
+  } ]
+  ZSamplesize;
+//  @UI.lineItem: [ {
+//  position: 90 ,
+//  importance: #MEDIUM,
+//  label: 'Quality Inspection Status',
+//    cssDefault.width: '200px'
+//  } ]
+//  @UI.identification: [ {
+//    position: 90 ,
+//    label: 'Quality Inspection Status',
+//    cssDefault.width: '200px'
+//  } ]
+//  ZQualityinsStatus;
+  @UI.lineItem: [ {
+  position: 100 ,
+  importance: #MEDIUM,
+  label: 'Purchase Order Price',
+   cssDefault.width: '100px'
+  } ]
+  @UI.identification: [ {
+    position: 100 ,
+    label: 'Purchase Order Price',
+    cssDefault.width: '100px'
+  } ]
+  ZPOPrice;
+   @UI.lineItem: [ {
+  position: 110 ,
+  importance: #MEDIUM,
+  label: 'After QC',
+   cssDefault.width: '100px'
+  } ]
+  @UI.identification: [ {
+    position: 110 ,
+    label: 'After QC',
+    cssDefault.width: '100px'
+  } ]
+  ZAfterQC;
+     @UI.lineItem: [ {
+  position: 120 ,
+  importance: #MEDIUM,
+  label: 'Initial Bill',
+   cssDefault.width: '100px'
+  } ]
+  @UI.identification: [ {
+    position: 120 ,
+    label: 'Initial Bill',
+    cssDefault.width: '100px'
+  } ]
+  ZInitialBillAmnt;
+    @UI.lineItem: [ {
+  position: 130 ,
+  importance: #MEDIUM,
+  label: 'Difference',
+   cssDefault.width: '100px'
+  } ]
+  @UI.identification: [ {
+    position: 130 ,
+    label: 'Difference',
+    cssDefault.width: '100px'
+  } ]
+  ZDifferenceDebit;
+     @UI.lineItem: [ {
+  position: 140 ,
+  importance: #MEDIUM,
+  label: 'Subsequent Credit Flag',
+   cssDefault.width: '100px'
+  } ]
+  @UI.identification: [ {
+    position: 140 ,
+    label: 'Subsequent Credit Flag',
+    cssDefault.width: '100px'
+  } ]
+  ZSubsequentCrdtFlag;
+    @UI.lineItem: [ {
+  position: 150 ,
+  importance: #MEDIUM,
+  label: 'Created At',
+   cssDefault.width: '100px'
+  } ]
+  @UI.identification: [ {
+    position: 150 ,
+    label: 'Created At',
+    cssDefault.width: '100px'
+  } ]
+  ZCreatedAt;
+}
